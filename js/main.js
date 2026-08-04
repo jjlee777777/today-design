@@ -99,27 +99,6 @@ modalCloseButtons.forEach((button) => {
   button.addEventListener('click', closeProjectModal);
 });
 
-contactForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-
-  const formData = new FormData(contactForm);
-  const name = formData.get('name');
-  const phone = formData.get('phone');
-  const service = formData.get('service');
-  const message = formData.get('message');
-
-  const subject = encodeURIComponent(`[투데이디자인 문의] ${service} - ${name}`);
-  const body = encodeURIComponent(
-`이름/업체명: ${name}
-연락처: ${phone}
-문의 분야: ${service}
-
-문의 내용:
-${message}`
-  );
-
-  window.location.href = `mailto:cpbcad@daum.net?subject=${subject}&body=${body}`;
-});
 
 const revealObserver = new IntersectionObserver((entries, observer) => {
   entries.forEach((entry) => {
