@@ -7,6 +7,11 @@ const sections = document.querySelectorAll('main section[id]');
 const filterButtons = document.querySelectorAll('.filter-btn');
 const projects = document.querySelectorAll('.project');
 const revealItems = document.querySelectorAll('.reveal');
+const contactForm = document.querySelector('#contactForm');
+const projectModal = document.querySelector('#projectModal');
+const modalTitle = document.querySelector('#modalTitle');
+const modalDescription = document.querySelector('#modalDescription');
+const modalCloseButtons = document.querySelectorAll('[data-close-modal]');
 
 function setMenu(open) {
   mainNav.classList.toggle('open', open);
@@ -17,18 +22,33 @@ function setMenu(open) {
   document.body.classList.toggle('menu-open', open);
 }
 
+function openProjectModal(project) {
+  modalTitle.textContent = project.dataset.title;
+  modalDescription.textContent = project.dataset.desc;
+  projectModal.classList.add('open');
+  projectModal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('menu-open');
+  projectModal.querySelector('.modal-close').focus();
+}
+
+function closeProjectModal() {
+  projectModal.classList.remove('open');
+  projectModal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('menu-open');
+}
+
 menuToggle.addEventListener('click', () => {
   setMenu(!mainNav.classList.contains('open'));
 });
 
 menuBackdrop.addEventListener('click', () => setMenu(false));
-
-navLinks.forEach((link) => {
-  link.addEventListener('click', () => setMenu(false));
-});
+navLinks.forEach((link) => link.addEventListener('click', () => setMenu(false)));
 
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') setMenu(false);
+  if (event.key === 'Escape') {
+    setMenu(false);
+    closeProjectModal();
+  }
 });
 
 window.addEventListener('resize', () => {
@@ -55,7 +75,6 @@ topButton.addEventListener('click', () => {
 filterButtons.forEach((button) => {
   button.addEventListener('click', () => {
     const filter = button.dataset.filter;
-
     filterButtons.forEach((item) => item.classList.remove('active'));
     button.classList.add('active');
 
@@ -64,6 +83,42 @@ filterButtons.forEach((button) => {
       project.classList.toggle('hide', !shouldShow);
     });
   });
+});
+
+projects.forEach((project) => {
+  project.addEventListener('click', () => openProjectModal(project));
+  project.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openProjectModal(project);
+    }
+  });
+});
+
+modalCloseButtons.forEach((button) => {
+  button.addEventListener('click', closeProjectModal);
+});
+
+contactForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(contactForm);
+  const name = formData.get('name');
+  const phone = formData.get('phone');
+  const service = formData.get('service');
+  const message = formData.get('message');
+
+  const subject = encodeURIComponent(`[투데이디자인 문의] ${service} - ${name}`);
+  const body = encodeURIComponent(
+`이름/업체명: ${name}
+연락처: ${phone}
+문의 분야: ${service}
+
+문의 내용:
+${message}`
+  );
+
+  window.location.href = `mailto:cpbcad@daum.net?subject=${subject}&body=${body}`;
 });
 
 const revealObserver = new IntersectionObserver((entries, observer) => {
