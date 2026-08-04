@@ -790,3 +790,144 @@ img {
     padding-right: 24px;
   }
 }
+
+
+/* V3 enhancements */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.portfolio-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: -18px 0 36px;
+}
+
+.filter-btn {
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: 0.22s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  color: var(--white);
+  background: var(--dark);
+  border-color: var(--dark);
+}
+
+.project {
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.project.hide {
+  display: none;
+}
+
+.project-image {
+  position: relative;
+  transition: transform 0.35s ease;
+}
+
+.project:hover .project-image {
+  transform: translateY(-6px);
+}
+
+.project-image::after {
+  content: "VIEW PROJECT";
+  position: absolute;
+  inset: auto 20px 20px auto;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.92);
+  color: #111;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: 0.25s ease;
+}
+
+.project:hover .project-image::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-contact-bar {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  body {
+    padding-bottom: 64px;
+  }
+
+  .mobile-contact-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1400;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    min-height: 58px;
+    background: #111;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .mobile-contact-bar a {
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 800;
+    border-right: 1px solid rgba(255,255,255,0.14);
+  }
+
+  .mobile-contact-bar a:last-child {
+    border-right: 0;
+    background: var(--point);
+  }
+
+  .top-button {
+    bottom: 82px;
+  }
+
+  .portfolio-filters {
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .filter-btn {
+    padding: 0 12px;
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .project,
+  .project-image,
+  .project-image::after {
+    transition: none;
+  }
+}
