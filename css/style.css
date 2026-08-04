@@ -1064,3 +1064,5 @@ img {
     padding: 32px 24px 26px;
   }
 }
+
+.honeypot { position: absolute !important; left: -9999px !important; opacity: 0 !important; }
