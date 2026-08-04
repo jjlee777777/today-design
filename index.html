@@ -15,7 +15,7 @@
   <meta property="og:image" content="images/og-image.svg">
 
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/style.css?v=1.1">
+  <link rel="stylesheet" href="css/style.css?v=1.2">
 </head>
 
 <body>
@@ -71,7 +71,7 @@
       </div>
     </section>
 
-    <section class="section about-section" id="about">
+    <section class="section about-section reveal" id="about">
       <div class="container split-layout">
         <div>
           <p class="section-label">ABOUT US</p>
@@ -95,7 +95,7 @@
       </div>
     </section>
 
-    <section class="section service-section" id="service">
+    <section class="section service-section reveal" id="service">
       <div class="container">
         <div class="section-top">
           <div>
@@ -145,7 +145,7 @@
       </div>
     </section>
 
-    <section class="section portfolio-section" id="portfolio">
+    <section class="section portfolio-section reveal" id="portfolio">
       <div class="container">
         <div class="section-top">
           <div>
@@ -155,8 +155,18 @@
           <p>현재는 샘플 이미지이며 실제 작업물로 교체할 수 있습니다.</p>
         </div>
 
+
+        <div class="portfolio-filters" aria-label="포트폴리오 분류">
+          <button class="filter-btn active" type="button" data-filter="all">ALL</button>
+          <button class="filter-btn" type="button" data-filter="branding">BRANDING</button>
+          <button class="filter-btn" type="button" data-filter="package">PACKAGE</button>
+          <button class="filter-btn" type="button" data-filter="web">WEB</button>
+          <button class="filter-btn" type="button" data-filter="print">PRINT</button>
+          <button class="filter-btn" type="button" data-filter="sign">SIGN</button>
+        </div>
+
         <div class="portfolio-grid">
-          <article class="project project-wide">
+          <article class="project project-wide" data-category="branding">
             <div class="project-image project-brand">
               <span>BRAND<br>IDENTITY</span>
             </div>
@@ -166,7 +176,7 @@
             </div>
           </article>
 
-          <article class="project">
+          <article class="project" data-category="package">
             <div class="project-image project-package">
               <span>PACKAGE</span>
             </div>
@@ -176,7 +186,7 @@
             </div>
           </article>
 
-          <article class="project">
+          <article class="project" data-category="web">
             <div class="project-image project-web">
               <span>WEB</span>
             </div>
@@ -186,7 +196,7 @@
             </div>
           </article>
 
-          <article class="project">
+          <article class="project" data-category="print">
             <div class="project-image project-print">
               <span>PRINT</span>
             </div>
@@ -196,7 +206,7 @@
             </div>
           </article>
 
-          <article class="project">
+          <article class="project" data-category="sign">
             <div class="project-image project-sign">
               <span>SIGN</span>
             </div>
@@ -209,7 +219,7 @@
       </div>
     </section>
 
-    <section class="section process-section" id="process">
+    <section class="section process-section reveal" id="process">
       <div class="container">
         <p class="section-label">WORK PROCESS</p>
         <h2>상담부터 최종 제작까지<br>명확한 과정으로 진행합니다.</h2>
@@ -239,7 +249,7 @@
       </div>
     </section>
 
-    <section class="contact-section" id="contact">
+    <section class="contact-section reveal" id="contact">
       <div class="container contact-grid">
         <div>
           <p class="section-label light">CONTACT</p>
@@ -256,6 +266,13 @@
     </section>
   </main>
 
+
+  <div class="mobile-contact-bar" aria-label="빠른 문의">
+    <a href="tel:01082591414">전화</a>
+    <a href="mailto:cpbcad@daum.net">이메일</a>
+    <a href="#contact">문의</a>
+  </div>
+
   <footer class="site-footer">
     <div class="container footer-inner">
       <div>
@@ -268,6 +285,6 @@
 
   <button class="top-button" type="button" aria-label="맨 위로 이동">↑</button>
 
-  <script src="js/main.js?v=1.1"></script>
+  <script src="js/main.js?v=1.2"></script>
 </body>
 </html>
