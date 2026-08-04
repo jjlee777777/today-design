@@ -15,7 +15,7 @@
   <meta property="og:image" content="images/og-image.svg">
 
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/style.css?v=1.3">
+  <link rel="stylesheet" href="css/style.css?v=1.4">
 </head>
 
 <body>
@@ -262,7 +262,13 @@
           </div>
         </div>
 
-        <form class="contact-form" id="contactForm">
+        <form class="contact-form" id="contactForm" action="https://formsubmit.co/cpbcad@daum.net" method="POST">
+          <input type="hidden" name="_subject" value="[투데이디자인] 홈페이지 문의">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://jjlee777777.github.io/today-design/#contact">
+          <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off">
+
           <label>
             <span>이름 또는 업체명</span>
             <input type="text" name="name" required placeholder="예: 홍길동 / ○○컴퍼니">
@@ -291,8 +297,8 @@
             <textarea name="message" rows="5" required placeholder="필요한 디자인, 일정, 수량 등을 적어 주세요."></textarea>
           </label>
 
-          <button class="btn btn-light form-submit" type="submit">이메일로 문의 보내기</button>
-          <p class="form-note">버튼을 누르면 기본 이메일 프로그램이 열립니다.</p>
+          <button class="btn btn-light form-submit" type="submit">문의 전송하기</button>
+          <p class="form-note">문의 내용은 투데이디자인 이메일로 직접 전송됩니다.</p>
         </form>
       </div>
     </section>
@@ -329,6 +335,6 @@
 
   <button class="top-button" type="button" aria-label="맨 위로 이동">↑</button>
 
-  <script src="js/main.js?v=1.3"></script>
+  <script src="js/main.js?v=1.4"></script>
 </body>
 </html>
