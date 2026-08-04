@@ -931,3 +931,136 @@ img {
     transition: none;
   }
 }
+
+
+/* V4 contact form and project modal */
+.contact-section .contact-grid {
+  align-items: start;
+}
+
+.contact-section .contact-info {
+  margin-top: 46px;
+}
+
+.contact-form {
+  display: grid;
+  gap: 18px;
+  padding: 32px;
+  background: #1b1b1b;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.contact-form label {
+  display: grid;
+  gap: 8px;
+}
+
+.contact-form label > span {
+  color: #bdbdbd;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: #101010;
+  color: #fff;
+  padding: 14px 15px;
+  font: inherit;
+  outline: none;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  border-color: var(--point);
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.form-submit {
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+.form-note {
+  margin: -6px 0 0;
+  color: #888;
+  font-size: 12px;
+}
+
+.project[role="button"] {
+  cursor: pointer;
+  outline: none;
+}
+
+.project[role="button"]:focus-visible {
+  box-shadow: 0 0 0 3px var(--point);
+}
+
+.project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+  place-items: center;
+  padding: 20px;
+}
+
+.project-modal.open {
+  display: grid;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+}
+
+.modal-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(520px, 100%);
+  padding: 40px;
+  background: #fff;
+  color: #171717;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.28);
+}
+
+.modal-dialog h3 {
+  margin: 0 0 14px;
+  font-size: 30px;
+  line-height: 1.25;
+}
+
+.modal-dialog > p:not(.section-label) {
+  margin: 0 0 28px;
+  color: var(--muted);
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: transparent;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .contact-form {
+    padding: 22px;
+  }
+
+  .modal-dialog {
+    padding: 32px 24px 26px;
+  }
+}
