@@ -4,6 +4,9 @@ const menuBackdrop = document.querySelector('.menu-backdrop');
 const navLinks = document.querySelectorAll('.main-nav a');
 const topButton = document.querySelector('.top-button');
 const sections = document.querySelectorAll('main section[id]');
+const filterButtons = document.querySelectorAll('.filter-btn');
+const projects = document.querySelectorAll('.project');
+const revealItems = document.querySelectorAll('.reveal');
 
 function setMenu(open) {
   mainNav.classList.toggle('open', open);
@@ -25,15 +28,11 @@ navLinks.forEach((link) => {
 });
 
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') {
-    setMenu(false);
-  }
+  if (event.key === 'Escape') setMenu(false);
 });
 
 window.addEventListener('resize', () => {
-  if (window.innerWidth > 960) {
-    setMenu(false);
-  }
+  if (window.innerWidth > 960) setMenu(false);
 });
 
 window.addEventListener('scroll', () => {
@@ -41,10 +40,7 @@ window.addEventListener('scroll', () => {
 
   let current = '';
   sections.forEach((section) => {
-    const sectionTop = section.offsetTop - 140;
-    if (window.scrollY >= sectionTop) {
-      current = section.id;
-    }
+    if (window.scrollY >= section.offsetTop - 140) current = section.id;
   });
 
   navLinks.forEach((link) => {
@@ -55,3 +51,28 @@ window.addEventListener('scroll', () => {
 topButton.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
+filterButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const filter = button.dataset.filter;
+
+    filterButtons.forEach((item) => item.classList.remove('active'));
+    button.classList.add('active');
+
+    projects.forEach((project) => {
+      const shouldShow = filter === 'all' || project.dataset.category === filter;
+      project.classList.toggle('hide', !shouldShow);
+    });
+  });
+});
+
+const revealObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+revealItems.forEach((item) => revealObserver.observe(item));
